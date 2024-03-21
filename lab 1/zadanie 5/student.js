@@ -1,5 +1,5 @@
-const FULLNAME = "Dmytro Horbatov";
-const STUDENT_ID = "44019";
+const FULLNAME = "Bohdana Yablinchuk";
+const STUDENT_ID = "44101";
 
 function getStudentFullName() {
     return FULLNAME;

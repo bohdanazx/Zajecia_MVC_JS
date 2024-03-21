@@ -1,6 +1,0 @@
-Numer albumu: 44019
-Imię: Dmytro
-Nazwisko: Horbatov
-Płeć: male
-Wiek: 19
-Kierunek: Informatyka

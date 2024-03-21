@@ -1,6 +1,9 @@
+const FULLNAME = "Bohdana Yablinchuk";
+const STUDENT_ID = "44101";
+
 function getStudentFullName(id) {
     if (id === 0) {
-        return "Dmytro Horbatov 44019";
+        return FULLNAME;
     } else if (id === 1) {
         return "Kacper Nowaki 111222";
     } else if (id === 2) {
@@ -12,7 +15,7 @@ function getStudentFullName(id) {
 
 function getStudentId(id) {
     if (id === 0) {
-        return "44019";
+        return STUDENT_ID;
     } else if (id === 1) {
         return "111222";
     } else if (id === 2) {
@@ -21,3 +24,5 @@ function getStudentId(id) {
         return "333444";
     }
 }
+
+module.exports = { getStudentFullName, getStudentId };

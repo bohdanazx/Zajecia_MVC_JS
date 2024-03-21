@@ -1,0 +1,6 @@
+Numer albumu: 44101
+Imię: Bohdana
+Nazwisko: Yablinchuk
+Płeć: female
+Wiek: 19
+Kierunek: Informatyka
