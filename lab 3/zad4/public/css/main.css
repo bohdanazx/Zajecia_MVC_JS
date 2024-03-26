@@ -1,0 +1,66 @@
+/* Resetowanie stylów */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Podstawowe style dla całej strony */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+/* Nagłówek */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+/* Nawigacja */
+nav {
+    margin-top: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin-right: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: blue;
+}
+
+nav ul li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background-color: blue;
+    padding: 5px 10px;
+}
+
+
+/* Lista studentów */
+.student-list {
+    margin-top: 20px;
+}
+
+.student-list li {
+    margin-bottom: 10px;
+}
+
+.student-list p {
+    margin-bottom: 5px;
+}
