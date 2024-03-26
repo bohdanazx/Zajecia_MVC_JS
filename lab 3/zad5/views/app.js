@@ -1,46 +1,50 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const path = require('path');
+const express = require('express'),
+  bodyParser = require('body-parser'),
+  app = express(),
+  PORT = process.env.PORT || 3000;
 
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.static(__dirname + '/public'));
 
 let students = [];
 
-app.use((req, res, next) => {
-  const currentDate = new Date().toLocaleString();
-  console.log(`Request ${req.method} on path ${req.url} ${currentDate}`);
-  next();
+app.get('/', (request, response) => {
+  response.sendFile(__dirname + '/views/home.html');
 });
 
-app.get('/students', (req, res) => {
-  let userList = '<ul>';
-  students.forEach(student => {
-    userList += `<li>${student.fullName} - ${student.major}</li>`;
-  });
-  userList += '</ul>';
-  res.send(userList);
+app.get('/student', (request, response) => {
+  response.sendFile(__dirname + '/views/student.html');
 });
 
+app.get('/add-student', (request, response) => {
+  response.sendFile(__dirname + '/views/add-student.html');
+});
 
-app.post('/students', (req, res) => {
-  const { firstName, lastName, major } = req.body;
+app.post('/student', (request, response) => {
+  const { firstName, lastName, major } = request.body;
   const fullName = `${firstName} ${lastName}`;
   students.push({ fullName, major });
-  res.send('Student added successfully!');
+  response.sendFile(__dirname + '/views/student.html');
 });
 
-app.delete('/students/:id', (req, res) => {
-  const id = req.params.id;
-  if (id < students.length) {
-    students.splice(id, 1);
-    res.send(`Student with id ${id} deleted successfully!`);
+app.get('/students', (request, response) => {
+  let userList = '<ul>';
+  students.forEach((student) => {
+    userList += `<li><p>${student.fullName} - ${student.major}</p></li>`;
+  });
+  userList += '</ul>';
+  response.send(userList);
+});
+
+// Żeby usunąć studenta z listy trzeba skorzystać z komendy "Invoke-WebRequest -Uri http://localhost:3000/student/0 -Method DELETE"
+app.delete('/student/:id', (request, response) => {
+  const studentId = request.params.id;
+  if (studentId >= 0 && studentId < students.length) {
+    students.splice(studentId, 1);
+    response.send('Student deleted successfully');
   } else {
-    res.status(404).send('Student not found');
+    response.status(400).send('Invalid student ID');
   }
 });
 
