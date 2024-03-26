@@ -37,7 +37,6 @@ app.get('/students', (request, response) => {
   response.send(userList);
 });
 
-// Żeby usunąć studenta z listy trzeba skorzystać z komendy "Invoke-WebRequest -Uri http://localhost:3000/student/0 -Method DELETE"
 app.delete('/student/:id', (request, response) => {
   const studentId = request.params.id;
   if (studentId >= 0 && studentId < students.length) {
