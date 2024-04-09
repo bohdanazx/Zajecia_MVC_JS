@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include partials/head.ejs %>
+</head>
+<body>
+    <% include partials/navigation.ejs %>
+    <h1>List of Students</h1>
+    <ul>
+        <% students.forEach(function(student) { %>
+            <li>
+                <p><strong>Name:</strong> <%= student.fullName %></p>
+                <p><strong>Code:</strong> <%= student.code %></p>
+                <p><strong>Field of Studies:</strong> <%= student.fieldOfStudies %></p>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
